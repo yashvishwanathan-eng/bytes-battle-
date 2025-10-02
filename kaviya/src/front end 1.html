@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bytes battle - Connecting Farmers to Global Markets</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2d5016 0%, #4a7c2c 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(45, 80, 22, 0.7)),
+            url('data:image/svg+xml,<svg xmlns="C:\Users\adars\Downloads\IMG-20251001-WA0011.jpg"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .cta-button:hover {
+            background: #ff8555;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.6);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            color: #2d5016;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #ff6b35;
+        }
+
+        .vegetables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .veg-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .veg-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .veg-header {
+            background: linear-gradient(135deg, #4a7c2c, #5d9939);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .veg-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .veg-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ffeb3b;
+        }
+
+        .veg-body {
+            padding: 20px;
+        }
+
+        .veg-info {
+            margin-bottom: 10px;
+        }
+
+        .veg-info strong {
+            color: #2d5016;
+        }
+
+        .regions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .region-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #4a7c2c;
+            transition: all 0.3s;
+        }
+
+        .region-card:hover {
+            background: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .region-card h3 {
+            color: #2d5016;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .region-card p {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .economic-impact {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 60px 20px;
+            border-radius: 20px;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .impact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .impact-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .impact-card h3 {
+            color: #2d5016;
+            margin-bottom: 10px;
+        }
+
+        .contact-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2d5016;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #4a7c2c;
+        }
+
+        .submit-btn {
+            background: #4a7c2c;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #5d9939;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 124, 44, 0.3);
+        }
+
+        footer {
+            background: #2d5016;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            gap: 20px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4a7c2c;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <div class="logo"> bytes battle </div>
+        <img src="C:\Users\adars\Downloads\IMG-20251001-WA0011.jpg">
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#vegetables">Vegetables</a></li>
+            <li><a href="#regions">Farming Regions</a></li>
+            <li><a href="#economic">Economic Impact</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section id="home" class="hero">
+    <h1>Empowering Indian Farmers, Feeding the World</h1>
+    <p>Connecting small-scale farmers directly to international markets</p>
+    <a href="#contact" class="cta-button">Partner With Us</a>
+</section>
+
+<div class="container">
+    <section id="vegetables">
+        <h2>Premium Indian Vegetables for Export (all this are in dollar because everything is exported in dollars)</h2>
+        <H3>all this are values of vegetables without any gst addition so don't confuse it real value</H3>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">Fresh, organic produce sourced directly from Indian farmers</p>
+
+        <div class="vegetables-grid">
+            <div class="veg-card">
+                <div class="veg-header">
+                    <h3>🥔 Potatoes</h3>
+                    <div class="veg-price">$0.60/kg(rs.53)</div>
+                </div>
+                <div class="veg-body">
+                    <div class="veg-info"><strong>Origin:</strong> Punjab, Uttar Pradesh, West Bengal</div>
+                    <div class="veg-info"><strong>Season:</strong> October - March</div>
+                    <div class="veg-info"><strong>Varieties:</strong> Kufri Jyoti, Kufri Pukhraj, Kufri Bahar</div>
+                    <div class="veg-info"><strong>Description:</strong> High-quality potatoes with excellent storage life, ideal for both fresh consumption and processing. Grown in fertile Indo-Gangetic plains.</div>
+                </div>
+            </div>
+
+            <div class="veg-card">
+                <div class="veg-header">
+                    <h3>🍅 Tomatoes</h3>
+                    <div class="veg-price">$0.70/kg(62)</div>
+                </div>
+                <div class="veg-body">
+                    <div class="veg-info"><strong>Origin:</strong> Karnataka, Maharashtra, Andhra Pradesh</div>
+                    <div class="veg-info"><strong>Season:</strong> Year-round (peak: Nov-Feb)</div>
+                    <div class="veg-info"><strong>Varieties:</strong> Pusa Ruby, Roma, Hybrid varieties</div>
+                    <div class="veg-info"><strong>Description:</strong> Rich, flavorful tomatoes perfect for fresh markets and processing. Cultivated using advanced greenhouse and open-field methods.</div>
+                </div>
+            </div>
+
+            <div class="veg-card">
+                <div class="veg-header">
+                    <h3>🧅 Onions</h3>
+                    <div class="veg-price">$0.5/kg(rs.44)</div>
+                </div>
+                <div class="veg-body">
+                    <div class="veg-info"><strong>Origin:</strong> Maharashtra, Karnataka, Gujarat</div>
+                    <div class="veg-info"><strong>Season:</strong> October - March (Rabi), June-Aug (Kharif)</div>
+                    <div class="veg-info"><strong>Varieties:</strong> Nashik Red, Bellary, Agrifound Dark Red</div>
+                    <div class="veg-info"><strong>Description:</strong> Premium quality onions with high pungency and excellent shelf life. India is one of the world's largest onion exporters.</div>
+                </div>
+            </div>
+
+            <div class="veg-card">
+                <div class="veg-header">
+                    <h3>🥒 Cucumbers</h3>
+                    <div class="veg-price">$0.55/kg(RS.48)</div>
+                </div>
+                <div class="veg-body">
+                    <div class="veg-info"><strong>Origin:</strong> Tamil Nadu, Karnataka, Punjab</div>
+                    <div class="veg-info"><strong>Season:</strong> October - March</div>
+                    <div class="veg-info"><strong>Varieties:</strong> Poinsett, Straight Eight, Hybrid varieties</div>
+                    <div class="veg-info"><strong>Description:</strong> Crisp, fresh cucumbers ideal for salads and pickling. Grown using sustainable farming practices with minimal pesticide use.</div>
+                </div>
+            </div>
+
+            <div class="veg-card">
+                <div class="veg-header">
+                    <h3>🌶️ Green Chilies</h3>
+                    <div class="veg-price">$1.20/kg(RS.106)</div>
+                </div>
+                <div class="veg-body">
+                    <div class="veg-info"><strong>Origin:</strong> Andhra Pradesh, Karnataka, Maharashtra</div>
+                    <div class="veg-info"><strong>Season:</strong> Year-round</div>
+                    <div class="veg-info"><strong>Varieties:</strong> G4, Pusa Jwala, Bhut Jolokia</div>
+                    <div class="veg-info"><strong>Description:</strong> Hot and flavorful chilies ranging from mild to extremely spicy. India produces the widest variety of chilies globally.</div>
+                </div>
+            </div>
+
+            <div class="veg-card">
+                <div class="veg-header">
+                    <h3>🥕 Carrots</h3>
+                    <div class="veg-price">$0.80/kg(RS,70)</div>
+                </div>
+                <div class="veg-body">
+                    <div class="veg-info"><strong>Origin:</strong> Punjab, Haryana, Uttar Pradesh</div>
+                    <div class="veg-info"><strong>Season:</strong> October - February</div>
+                    <div class="veg-info"><strong>Varieties:</strong> Nantes, Imperator, Chantenay</div>
+                    <div class="veg-info"><strong>Description:</strong> Sweet, crunchy carrots packed with nutrients. Grown in cooler regions for optimal flavor and texture.</div>
+                </div>
+            </div>
+
+            <div class="veg-card">
+                <div class="veg-header">
+                    <h3>🫑 Capsicum (Bell Pepper)</h3>
+                    <div class="veg-price">$1.80/kg(159)</div>
+                </div>
+                <div class="veg-body">
+                    <div class="veg-info"><strong>Origin:</strong> Karnataka, Maharashtra, Himachal Pradesh</div>
+                    <div class="veg-info"><strong>Season:</strong> Year-round (controlled environment)</div>
+                    <div class="veg-info"><strong>Varieties:</strong> Green, Red, Yellow varieties</div>
+                    <div class="veg-info"><strong>Description:</strong> Colorful, crisp bell peppers grown in polyhouses for premium quality. Perfect for international markets.</div>
+                </div>
+            </div>
+
+            <div class="veg-card">
+                <div class="veg-header">
+                    <h3>🥬 Cabbage</h3>
+                    <div class="veg-price">$0.40/kg(35)</div>
+                </div>
+                <div class="veg-body">
+                    <div class="veg-info"><strong>Origin:</strong> West Bengal, Odisha, Bihar</div>
+                    <div class="veg-info"><strong>Season:</strong> November - March</div>
+                    <div class="veg-info"><strong>Varieties:</strong> Golden Acre, Pride of India</div>
+                    <div class="veg-info"><strong>Description:</strong> Dense, fresh cabbages with excellent keeping quality. Grown in nutrient-rich soil for maximum nutritional value.</div>
+                </div>
+            </div>
+
+            <div class="veg-card">
+                <div class="veg-header">
+                    <h3>🥦 Cauliflower</h3>
+                    <div class="veg-price">$0.70/kg(RS.80)</div>
+                </div>
+                <div class="veg-body">
+                    <div class="veg-info"><strong>Origin:</strong> Bihar, Uttar Pradesh, West Bengal</div>
+                    <div class="veg-info"><strong>Season:</strong> November - February</div>
+                    <div class="veg-info"><strong>Varieties:</strong> Pusa Snowball, Early Kunwari</div>
+                    <div class="veg-info"><strong>Description:</strong> Premium white cauliflower with tight curds. Carefully cultivated to maintain freshness during export.</div>
+                </div>
+            </div>
+
+            <div class="veg-card">
+                <div class="veg-header">
+                    <h3>🍆 Eggplant (Brinjal)</h3>
+                    <div class="veg-price">$0.65/kg(RS.57)</div>
+                </div>
+                <div class="veg-body">
+                    <div class="veg-info"><strong>Origin:</strong> West Bengal, Odisha, Gujarat</div>
+                    <div class="veg-info"><strong>Season:</strong> Year-round</div>
+                    <div class="veg-info"><strong>Varieties:</strong> Pusa Purple Long, Round varieties</div>
+                    <div class="veg-info"><strong>Description:</strong> Fresh, glossy eggplants in various shapes and sizes. India's native vegetable with superior flavor profiles.</div>
+                </div>
+            </div>
+
+            <div class="veg-card">
+                <div class="veg-header">
+                    <h3>🫛 Green Peas</h3>
+                    <div class="veg-price">$1.50/kg(RS.135)</div>
+                </div>
+                <div class="veg-body">
+                    <div class="veg-info"><strong>Origin:</strong> Uttar Pradesh, Punjab, Haryana</div>
+                    <div class="veg-info"><strong>Season:</strong> December - March</div>
+                    <div class="veg-info"><strong>Varieties:</strong> Arkel, Bonneville, Lincoln</div>
+                    <div class="veg-info"><strong>Description:</strong> Sweet, tender green peas perfect for fresh and frozen markets. Harvested at peak maturity for optimal sweetness.</div>
+                </div>
+            </div>
+
+            <div class="veg-card">
+                <div class="veg-header">
+                    <h3>🥔 Sweet Potato</h3>
+                    <div class="veg-price">$0.75/kg(RS.66)</div>
+                </div>
+                <div class="veg-body">
+                    <div class="veg-info"><strong>Origin:</strong> Odisha, Bihar, Uttar Pradesh</div>
+                    <div class="veg-info"><strong>Season:</strong> September - February</div>
+                    <div class="veg-info"><strong>Varieties:</strong> Orange, Purple, White varieties</div>
+                    <div class="veg-info"><strong>Description:</strong> Nutritious sweet potatoes with high beta-carotene content. Increasingly popular in health-conscious international markets.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats">
+        <div class="stat-box">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Partner Farmers</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">25+</div>
+            <div class="stat-label">Countries Served</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">10,000+</div>
+            <div class="stat-label">Tons Exported Annually</div>
+        </div>
+    </div>
+
+    <section id="regions">
+        <h2>Farming Regions of India</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">Discover the diverse agricultural landscape of India</p>
+
+        <div class="regions-grid">
+            <div class="region-card">
+                <h3>🌾 Punjab & Haryana</h3>
+                <p><strong>Known as:</strong> The Granary of India</p>
+                <p><strong>Key Crops:</strong> Wheat, Rice, Potatoes, Carrots, Cauliflower</p>
+                <p><strong>Climate:</strong> Semi-arid with hot summers and cold winters</p>
+                <p><strong>Specialty:</strong> Advanced irrigation systems and high-yield varieties. Farmers use modern equipment and scientific farming methods.</p>
+                <p><strong>Soil:</strong> Rich alluvial soil from Indus river system</p>
+            </div>
+
+            <div class="region-card">
+                <h3>🌱 Maharashtra</h3>
+                <p><strong>Key Crops:</strong> Onions, Tomatoes, Grapes, Cotton, Sugarcane</p>
+                <p><strong>Climate:</strong> Tropical monsoon climate</p>
+                <p><strong>Specialty:</strong> Nashik is the onion capital of India. Known for diverse agro-climatic zones supporting multiple crops.</p>
+                <p><strong>Notable:</strong> Strong farmer cooperatives and government support programs</p>
+                <p><strong>Soil:</strong> Black soil (Regur) ideal for cotton and onions</p>
+            </div>
+
+            <div class="region-card">
+                <h3>🥥 Karnataka</h3>
+                <p><strong>Key Crops:</strong> Tomatoes, Capsicum, Coffee, Spices, Ragi</p>
+                <p><strong>Climate:</strong> Varied - tropical to temperate in hill regions</p>
+                <p><strong>Specialty:</strong> Leaders in greenhouse and polyhouse cultivation. Bangalore region produces premium vegetables year-round.</p>
+                <p><strong>Innovation:</strong> High adoption of drip irrigation and organic farming</p>
+                <p><strong>Soil:</strong> Red laterite soil rich in iron oxide</p>
+            </div>
+
+            <div class="region-card">
+                <h3>🌾 Uttar Pradesh</h3>
+                <p><strong>Key Crops:</strong> Potatoes, Sugarcane, Wheat, Mangoes, Peas</p>
+                <p><strong>Climate:</strong> Tropical monsoon with hot summers</p>
+                <p><strong>Specialty:</strong> Largest potato producer in India. Western UP is highly productive with canal irrigation.</p>
+                <p><strong>Infrastructure:</strong> Well-connected with cold storage facilities</p>
+                <p><strong>Soil:</strong> Fertile alluvial soil from Ganga and Yamuna rivers</p>
+            </div>
+
+            <div class="region-card">
+                <h3>🌶️ Andhra Pradesh & Telangana</h3>
+                <p><strong>Key Crops:</strong> Chilies, Rice, Turmeric, Cotton, Tobacco</p>
+                <p><strong>Climate:</strong> Tropical with coastal influence</p>
+                <p><strong>Specialty:</strong> World's largest chili producer. Guntur chilies are internationally famous for their pungency.</p>
+                <p><strong>Export Hub:</strong> Strong processing and packaging infrastructure</p>
+                <p><strong>Soil:</strong> Alluvial in deltas, red soil in interior regions</p>
+            </div>
+
+            <div class="region-card">
+                <h3>🥬 West Bengal</h3>
+                <p><strong>Key Crops:</strong> Rice, Jute, Potatoes, Cabbage, Eggplant</p>
+                <p><strong>Climate:</strong> Tropical with high rainfall</p>
+                <p><strong>Specialty:</strong> Multiple cropping seasons due to favorable climate. Rich tradition of vegetable cultivation.</p>
+                <p><strong>Notable:</strong> Hooghly district famous for diverse vegetables</p>
+                <p><strong>Soil:</strong> Highly fertile alluvial soil from Ganga delta</p>
+            </div>
+
+            <div class="region-card">
+                <h3>🌾 Gujarat</h3>
+                <p><strong>Key Crops:</strong> Cotton, Groundnuts, Onions, Bananas, Mangoes</p>
+                <p><strong>Climate:</strong> Semi-arid to arid</p>
+                <p><strong>Specialty:</strong> Successful cooperative movement (Amul model). Strong vegetable export infrastructure in Surat and Ahmedabad.</p>
+                <p><strong>Innovation:</strong> Water conservation and micro-irrigation leaders</p>
+                <p><strong>Soil:</strong> Black soil in central, alluvial in south</p>
+            </div>
+
+            <div class="region-card">
+                <h3>🍅 Tamil Nadu</h3>
+                <p><strong>Key Crops:</strong> Rice, Bananas, Cucumbers, Coconut, Flowers</p>
+                <p><strong>Climate:</strong> Tropical with two monsoons</p>
+                <p><strong>Specialty:</strong> Advanced horticulture practices. Strong network of vegetable markets and export facilities.</p>
+                <p><strong>Notable:</strong> Coimbatore region known for hybrid vegetable seeds</p>
+                <p><strong>Soil:</strong> Red loamy and black soils</p>
+            </div>
+
+            <div class="region-card">
+                <h3>🏔️ Himachal Pradesh & Uttarakhand</h3>
+                <p><strong>Key Crops:</strong> Apples, Peas, Tomatoes, Capsicum, Herbs</p>
+                <p><strong>Climate:</strong> Temperate to alpine</p>
+                <p><strong>Specialty:</strong> Premium quality off-season vegetables. Organic farming in mountain slopes.</p>
+                <p><strong>Export:</strong> High-value crops with international quality standards</p>
+                <p><strong>Soil:</strong> Mountain soils rich in organic matter</p>
+            </div>
+
+            <div class="region-card">
+                <h3>🌾 Bihar & Jharkhand</h3>
+                <p><strong>Key Crops:</strong> Litchi, Vegetables, Rice, Maize, Pulses</p>
+                <p><strong>Climate:</strong> Tropical with high rainfall</p>
+                <p><strong>Specialty:</strong> Rich alluvial soil supports diverse crops. Growing focus on vegetable cultivation for urban markets.</p>
+                <p><strong>Potential:</strong> Emerging export hub with government support</p>
+                <p><strong>Soil:</strong> Fertile Gangetic alluvium</p>
+            </div>
+
+            <div class="region-card">
+                <h3>🥭 Kerala</h3>
+                <p><strong>Key Crops:</strong> Spices, Coconut, Tapioca, Banana, Vegetables</p>
+                <p><strong>Climate:</strong> Tropical monsoon with high humidity</p>
+                <p><strong>Specialty:</strong> Organic farming movement. Known for spice plantations and sustainable agriculture.</p>
+                <p><strong>Export:</strong> Strong international connections through ports</p>
+                <p><strong>Soil:</strong> Laterite and coastal alluvium</p>
+            </div>
+
+            <div class="region-card">
+                <h3>🌾 Odisha</h3>
+                <p><strong>Key Crops:</strong> Rice, Turmeric, Sweet Potato, Eggplant, Green Vegetables</p>
+                <p><strong>Climate:</strong> Tropical with heavy monsoon</p>
+                <p><strong>Specialty:</strong> Coastal region supports diverse vegetables. Growing cold storage infrastructure for export markets.</p>
+                <p><strong>Notable:</strong> Rich tribal farming traditions with organic practices</p>
+                <p><strong>Soil:</strong> Red and laterite soils, coastal alluvium</p>
+            </div>
+            <div class="region-card">
+                <h3>this are some of the places there are many more places like this </h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="economic" class="economic-impact">
+        <h2>Economic Impact on India</h2>
+        <p style="text-align: center; color: #666; max-width: 800px; margin: 0 auto 40px;">How AgroExport India drives economic growth and transforms rural communities</p>
+
+        <div class="impact-grid">
+            <div class="impact-card">
+                <div class="impact-icon">💰</div>
+                <h3>Farmer Income Growth</h3>
+                <p><strong>Impact:</strong> By eliminating middlemen, farmers receive 40-60% higher prices for their produce directly from international buyers.</p>
+                <p><strong>Result:</strong> Average farmer income increases by ₹50,000-₹150,000 annually, improving quality of life and enabling investment in better farming techniques.</p>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-icon">🌍</div>
+                <h3>Foreign Exchange Earnings</h3>
+                <p><strong>Impact:</strong> India's vegetable export market worth $2.5 billion annually. Our platform contributes significantly to forex reserves.</p>
+                <p><strong>Result:</strong> Strengthens rupee, reduces trade deficit, and positions India as a reliable global food supplier.</p>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-icon">👨‍🌾</div>
+                <h3>Employment Generation</h3>
+                <p><strong>Impact:</strong> Creates jobs across the value chain - farming, packaging, logistics, quality control, and export documentation.</p>
+                <p><strong>Result:</strong> Generates 50,000+ direct and indirect jobs, reducing rural-urban migration and strengthening rural economies.</p>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-icon">🏭</div>
+                <h3>Infrastructure Development</h3>
+                <p><strong>Impact:</strong> Drives investment in cold chains, pack houses, processing units, and rural connectivity.</p>
+                <p><strong>Result:</strong> Reduces post-harvest losses from 30% to under 10%, saving billions of rupees worth of produce annually.</p>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-icon">📈</div>
+                <h3>GDP Contribution</h3>
+                <p><strong>Impact:</strong> Agriculture contributes 18-20% to India's GDP. Export-oriented farming adds higher value compared to domestic markets.</p>
+                <p><strong>Result:</strong> Each ton exported generates 3-5x more economic value than domestic sales, boosting overall GDP growth.</p>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-icon">🎓</div>
+                <h3>Skill Development</h3>
+                <p><strong>Impact:</strong> Training farmers in international quality standards, organic certification, and modern farming techniques.</p>
+                <p><strong>Result:</strong> Upskilled workforce produces higher quality crops, making India competitive in premium global markets.</p>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-icon">🌱</div>
+                <h3>Sustainable Farming</h3>
+                <p><strong>Impact:</strong> International buyers demand sustainable practices, encouraging organic farming and water conservation.</p>
+                <p><strong>Result:</strong> Environmental benefits while commanding premium prices (20-30% higher) for certified organic produce.</p>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-icon">🏘️</div>
+                <h3>Rural Development</h3>
+                <p><strong>Impact:</strong> Export revenues improve rural infrastructure - roads, electricity, internet connectivity, schools, and healthcare.</p>
+                <p><strong>Result:</strong> Holistic development of farming communities with better living standards and opportunities.</p>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-icon">🤝</div>
+                <h3>Farmer Cooperatives</h3>
+                <p><strong>Impact:</strong> Strengthens collective bargaining power through farmer producer organizations (FPOs).</p>
+                <p><strong>Result:</strong> Small farmers access global markets, better credit facilities, and shared resources for quality improvement.</p>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-icon">🔬</div>
+                <h3>Technology Adoption</h3>
+                <p><strong>Impact:</strong> Digital platforms enable traceability, quality monitoring, and direct buyer-farmer communication.</p>
+                <p><strong>Result:</strong> Accelerates digital transformation in agriculture, improving efficiency and transparency across the supply chain.</p>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-icon">📦</div>
+                <h3>Value Addition</h3>
+                <p><strong>Impact:</strong> Encourages processing, grading, and packaging at source, creating additional revenue streams.</p>
+                <p><strong>Result:</strong> Generates 30-40% more value per ton through proper grading, cutting, and packaging operations.</p>
+            </div>
+
+            <div class="impact-card">
+                <div class="impact-icon">🌐</div>
+                <h3>Global Integration</h3>
+                <p><strong>Impact:</strong> Connects Indian agriculture to global supply chains, making farmers aware of international demand trends.</p>
+                <p><strong>Result:</strong> Market-driven farming with better planning, reduced wastage, and alignment with global consumer preferences.</p>
+            </div>
+        </div>
+
+        <div style="background: white; padding: 40px; border-radius: 15px; margin-top: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);">
+            <h3 style="color: #2d5016; text-align: center; margin-bottom: 25px; font-size: 1.8rem;">Projected Economic Benefits (Next 5 Years)</h3>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; margin-top: 30px;">
+                <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+                    <div style="font-size: 2rem; font-weight: bold; color: #4a7c2c;">$5B+</div>
+                    <div style="color: #666; margin-top: 8px;">Export Revenue Target</div>
+                </div>
+                <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+                    <div style="font-size: 2rem; font-weight: bold; color: #4a7c2c;">1M+</div>
+                    <div style="color: #666; margin-top: 8px;">Farmers Benefited</div>
+                </div>
+                <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+                    <div style="font-size: 2rem; font-weight: bold; color: #4a7c2c;">2.5M</div>
+                    <div style="color: #666; margin-top: 8px;">Jobs Created</div>
+                </div>
+                <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+                    <div style="font-size: 2rem; font-weight: bold; color: #4a7c2c;">50+</div>
+                    <div style="color: #666; margin-top: 8px;">Countries Reached</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding: 25px; background: linear-gradient(135deg, #4a7c2c, #5d9939); border-radius: 10px; color: white;">
+                <h4 style="margin-bottom: 15px; font-size: 1.4rem;">Why This Model Works</h4>
+                <ul style="line-height: 2; list-style-position: inside;">
+                    <li><strong>Direct Trade:</strong> Eliminates 4-5 intermediaries, ensuring fair prices</li>
+                    <li><strong>Quality Focus:</strong> International standards improve overall produce quality</li>
+                    <li><strong>Market Access:</strong> Small farmers access high-value global markets</li>
+                    <li><strong>Assured Income:</strong> Contract farming provides price stability and demand certainty</li>
+                    <li><strong>Knowledge Transfer:</strong> Exposure to global best practices in agriculture</li>
+                    <li><strong>Financial Inclusion:</strong> Export earnings improve creditworthiness and banking access</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Get In Touch</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 40px;">Partner with us to export premium Indian vegetables globally</p>
+
+        <div class="contact-section">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 40px;">
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">📞</div>
+                    <h4 style="color: #2d5016; margin-bottom: 10px;">Phone</h4>
+                    <p>+91 </p>
+                    <p>+91-11-2345-6790 </p>
+                </div>
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">✉️</div>
+                    <h4 style="color: #2d5016; margin-bottom: 10px;">Email</h4>
+                    <p></p>
+                    <p>farmers@agroexportindia.com</p>
+                </div>
+                <div style="text-align: center; padding: 20px;">
+                    <div style="font-size: 2.5rem; margin-bottom: 10px;">📍</div>
+                    <h4 style="color: #2d5016; margin-bottom: 10px;">Head Office</h4>
+                    <p>bytes battle (website prototype)</p>
+                    <p>satyabama college.chennai - 600119, India</p>
+                </div>
+            </div>
+
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" required placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" required placeholder="your.email@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" required placeholder="+91-XXXXXXXXXX">
+                </div>
+
+                <div class="form-group">
+                    <label for="type">I am a *</label>
+                    <select id="type" required>
+                        <option value="">-- Select Type --</option>
+                        <option value="farmer">Farmer / Farmer Group</option>
+                        <option value="buyer">International Buyer</option>
+                        <option value="distributor">Distributor / Agent</option>
+                        <option value="investor">Investor</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="region">State / Region</label>
+                    <input type="text" id="region" placeholder="Your state or region">
+                </div>
+
+                <div class="form-group">
+                    <label for="interest">Vegetables of Interest</label>
+                    <input type="text" id="interest" placeholder="e.g., Onions, Tomatoes, Chilies">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" rows="5" required placeholder="Tell us about your requirements or inquiry..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Inquiry</button>
+            </form>
+
+            <div id="success-message" style="display: none; background: #d4edda; color: #155724; padding: 20px; border-radius: 10px; margin-top: 20px; text-align: center; font-weight: bold;">
+                ✓ Thank you for your inquiry! We will contact you within 24 hours.
+            </div>
+        </div>
+
+        <div style="margin-top: 60px; background: linear-gradient(135deg, #f8f9fa, #e9ecef); padding: 40px; border-radius: 15px;">
+            <h3 style="color: #2d5016; text-align: center; margin-bottom: 30px; font-size: 1.8rem;">Regional Offices & Collection Centers</h3>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.05);">
+                    <h4 style="color: #4a7c2c; margin-bottom: 15px;">Northern Region</h4>
+                    <p><strong>Location:</strong> Punjab, Haryana, UP</p>
+                    <p><strong>Contact:</strong> +91-161-234-5678</p>
+                    <p><strong>Email:</strong> north@agroexportindia.com</p>
+                    <p><strong>Specialty:</strong> Potatoes, Wheat, Vegetables</p>
+                </div>
+
+                <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.05);">
+                    <h4 style="color: #4a7c2c; margin-bottom: 15px;">Western Region</h4>
+                    <p><strong>Location:</strong> Maharashtra, Gujarat</p>
+                    <p><strong>Contact:</strong> +91-20-345-6789</p>
+                    <p><strong>Email:</strong> west@agroexportindia.com</p>
+                    <p><strong>Specialty:</strong> Onions, Grapes, Cotton</p>
+                </div>
+
+                <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.05);">
+                    <h4 style="color: #4a7c2c; margin-bottom: 15px;">Southern Region</h4>
+                    <p><strong>Location:</strong> Karnataka, Andhra Pradesh</p>
+                    <p><strong>Contact:</strong> +91-80-456-7890</p>
+                    <p><strong>Email:</strong> south@agroexportindia.com</p>
+                    <p><strong>Specialty:</strong> Chilies, Tomatoes, Spices</p>
+                </div>
+
+                <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.05);">
+                    <h4 style="color: #4a7c2c; margin-bottom: 15px;">Eastern Region</h4>
+                    <p><strong>Location:</strong> West Bengal, Bihar, Odisha</p>
+                    <p><strong>Contact:</strong> +91-33-567-8901</p>
+                    <p><strong>Email:</strong> east@agroexportindia.com</p>
+                    <p><strong>Specialty:</strong> Rice, Vegetables, Jute</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <h3 style="margin-bottom: 20px;">🌾 bytes battle</h3>
+        <p style="margine-botton: 15px;">this is a prototype so everything in here is not true and this email are fake so don't bother about them</p>
+        <p style="margin-bottom: 15px;">Empowering Indian farmers | Feeding the world | Building sustainable agriculture</p>
+        <p style="margin-bottom: 20px;">Registered with APEDA (Agricultural and Processed Food Products Export Development Authority)</p>
+        <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 20px;">
+            <a href="#home" style="color: white; text-decoration: none;">Home</a>
+            <a href="#vegetables" style="color: white; text-decoration: none;">Vegetables</a>
+            <a href="#regions" style="color: white; text-decoration: none;">Regions</a>
+            <a href="#economic" style="color: white; text-decoration: none;">Economic Impact</a>
+            <a href="#contact" style="color: white; text-decoration: none;">Contact</a>
+        </div>
+        <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.3);">
+            © 2024 AgroExport India. All rights reserved. | Connecting Small Farmers to Global Markets
+        </p>
+    </div>
+</footer>
+
+<script>
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const type = document.getElementById('type').value;
+        const region = document.getElementById('region').value;
+        const interest = document.getElementById('interest').value;
+        const message = document.getElementById('message').value;
+
+        // In a real application, this would send data to a server
+        console.log('Form submitted:', { name, email, phone, type, region, interest, message });
+
+        // Show success message
+        document.getElementById('success-message').style.display = 'block';
+
+        // Reset form
+        e.target.reset();
+
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+            document.getElementById('success-message').style.display = 'none';
+        }, 5000);
+
+        // Scroll to success message
+        document.getElementById('success-message').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+</body>
+</html>
