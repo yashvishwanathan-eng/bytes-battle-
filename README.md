@@ -1,4 +1,4 @@
-# 🌾 Bytes Battle - Agricultural Export Platform
+# Bytes Battle - Agricultural Export Platform
 
 ![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
@@ -10,9 +10,7 @@
 
 A modern, responsive web platform designed to empower Indian farmers by connecting them directly with international buyers, eliminating middlemen and ensuring fair prices for premium agricultural produce.
 
----
-
-## 📋 Table of Contents
+##  Table of Contents
 
 - [Overview](#overview)
 - [Features](#features)
@@ -31,9 +29,7 @@ A modern, responsive web platform designed to empower Indian farmers by connecti
 - [License](#license)
 - [Disclaimer](#disclaimer)
 
----
-
-## 🎯 Overview
+## Overview
 
 **Bytes Battle** is a prototype web platform that demonstrates how technology can bridge the gap between small-scale Indian farmers and global agricultural markets. The platform showcases:
 
