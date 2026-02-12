@@ -1,0 +1,1114 @@
+# Requirements Documentation
+## Bytes Battle - Agricultural Export Platform
+
+**Version:** 1.0.0  
+**Last Updated:** February 12, 2026  
+**Project Type:** Web Application (Prototype)
+
+---
+
+## Table of Contents
+
+1. [System Requirements](#system-requirements)
+2. [Functional Requirements](#functional-requirements)
+3. [Non-Functional Requirements](#non-functional-requirements)
+4. [Technical Requirements](#technical-requirements)
+5. [User Requirements](#user-requirements)
+6. [Data Requirements](#data-requirements)
+7. [Security Requirements](#security-requirements)
+8. [Performance Requirements](#performance-requirements)
+9. [Compliance Requirements](#compliance-requirements)
+10. [Future Requirements](#future-requirements)
+
+---
+
+## 1. System Requirements
+
+### 1.1 Client-Side Requirements
+
+#### Minimum Hardware Requirements:
+- **Processor:** 1.6 GHz or faster
+- **RAM:** 2 GB minimum, 4 GB recommended
+- **Storage:** 100 MB free disk space
+- **Display:** 1024x768 resolution minimum
+- **Network:** Broadband internet connection (1 Mbps+)
+
+#### Supported Operating Systems:
+- ✅ Windows 10/11
+- ✅ macOS 10.13 (High Sierra) or later
+- ✅ Linux (Ubuntu 18.04+, Fedora 30+, etc.)
+- ✅ iOS 12+ (Safari)
+- ✅ Android 8.0+ (Chrome)
+
+#### Supported Web Browsers:
+| Browser | Minimum Version | Recommended |
+|---------|----------------|-------------|
+| Google Chrome | 60+ | Latest |
+| Mozilla Firefox | 55+ | Latest |
+| Safari | 11+ | Latest |
+| Microsoft Edge | 79+ (Chromium) | Latest |
+| Opera | 47+ | Latest |
+| Brave | 1.0+ | Latest |
+
+#### Required Browser Features:
+- CSS3 support (Grid, Flexbox, Gradients, Transforms)
+- HTML5 support
+- JavaScript ES6+ support
+- Smooth scroll API
+- Form validation API
+- LocalStorage (for future enhancements)
+- Fetch API (for future backend integration)
+
+### 1.2 Server-Side Requirements (Future Implementation)
+
+#### For Development Server:
+- **Python:** 3.7+ (for simple HTTP server)
+- **Node.js:** 14+ (optional, for http-server)
+- **PHP:** 7.4+ (optional)
+
+#### For Production Deployment:
+- **Web Server:** Apache 2.4+, Nginx 1.18+, or any static file server
+- **SSL/TLS:** Certificate required for HTTPS
+- **CDN:** Optional but recommended for global distribution
+
+---
+
+## 2. Functional Requirements
+
+### 2.1 User Interface Requirements
+
+#### FR-UI-001: Navigation System
+**Priority:** HIGH  
+**Description:** The platform must provide a sticky navigation header with smooth scrolling to all major sections.
+
+**Acceptance Criteria:**
+- Navigation header remains visible on scroll
+- All navigation links must work
+- Smooth scroll animation (500ms duration)
+- Active section highlighting
+- Mobile-responsive hamburger menu (if implemented)
+
+#### FR-UI-002: Hero Section
+**Priority:** HIGH  
+**Description:** Landing page must display compelling hero section with call-to-action.
+
+**Acceptance Criteria:**
+- Clear value proposition headline
+- Subheading with mission statement
+- Primary CTA button ("Partner With Us")
+- Responsive background image/gradient
+- Readable text contrast ratios
+
+#### FR-UI-003: Vegetables Catalog
+**Priority:** HIGH  
+**Description:** Display comprehensive catalog of exportable vegetables.
+
+**Acceptance Criteria:**
+- Minimum 12 vegetable entries
+- Each card must include:
+  - Vegetable name and icon
+  - Price per kg (USD and INR)
+  - Origin states
+  - Growing season
+  - Varieties
+  - Description (50-100 words)
+- Responsive grid layout (1-3 columns based on screen size)
+- Hover effects on cards
+- Price clarity disclaimer
+
+#### FR-UI-004: Farming Regions
+**Priority:** MEDIUM  
+**Description:** Showcase major agricultural regions of India.
+
+**Acceptance Criteria:**
+- Minimum 10 regional cards
+- Each card includes:
+  - Region name
+  - Key crops
+  - Climate information
+  - Soil types
+  - Specialty/unique features
+- Responsive grid layout
+- Hover effects
+
+#### FR-UI-005: Economic Impact Section
+**Priority:** MEDIUM  
+**Description:** Display economic benefits and statistics.
+
+**Acceptance Criteria:**
+- 12 impact cards with icons
+- Statistics section with 3-4 key metrics
+- 5-year projection display
+- "Why This Model Works" explanation
+- Responsive layout
+
+#### FR-UI-006: Contact Form
+**Priority:** HIGH  
+**Description:** Functional contact/inquiry form for stakeholders.
+
+**Acceptance Criteria:**
+- Required fields: Name, Email, Phone, Type, Message
+- Optional fields: Region, Vegetables of Interest
+- Dropdown for stakeholder type (Farmer, Buyer, Distributor, Investor, Other)
+- Real-time validation
+- Success message display
+- Form reset after submission
+- Auto-hide success message (5 seconds)
+
+#### FR-UI-007: Footer
+**Priority:** LOW  
+**Description:** Informational footer with links and legal information.
+
+**Acceptance Criteria:**
+- Company name and tagline
+- Quick links to all sections
+- Copyright notice
+- Disclaimer about prototype nature
+- Regional office information
+
+### 2.2 Interaction Requirements
+
+#### FR-INT-001: Form Submission
+**Priority:** HIGH  
+**Description:** Handle contact form submissions with validation.
+
+**Acceptance Criteria:**
+- Client-side validation before submission
+- Prevent submission if required fields empty
+- Email format validation
+- Phone number format validation
+- Success/error message display
+- Smooth scroll to confirmation
+
+#### FR-INT-002: Smooth Scrolling
+**Priority:** MEDIUM  
+**Description:** All anchor links must use smooth scroll behavior.
+
+**Acceptance Criteria:**
+- Navigation links scroll smoothly
+- CTA button scrolls to contact form
+- 500ms animation duration
+- Works on all supported browsers
+
+#### FR-INT-003: Responsive Behavior
+**Priority:** HIGH  
+**Description:** Layout adapts to different screen sizes.
+
+**Acceptance Criteria:**
+- Desktop: 3-column grid for cards
+- Tablet: 2-column grid
+- Mobile: 1-column grid
+- Text remains readable on all devices
+- Images scale appropriately
+- No horizontal scrolling on mobile
+
+---
+
+## 3. Non-Functional Requirements
+
+### 3.1 Usability Requirements
+
+#### NFR-USE-001: Accessibility
+**Priority:** HIGH  
+**Requirement:** Platform must be accessible to users with disabilities.
+
+**Standards:**
+- WCAG 2.1 Level AA compliance
+- Semantic HTML structure
+- Proper heading hierarchy (H1 → H2 → H3)
+- Alt text for images (when implemented)
+- Keyboard navigation support
+- Minimum color contrast ratio: 4.5:1 for text
+- Focus indicators on interactive elements
+
+#### NFR-USE-002: User Experience
+**Priority:** HIGH  
+**Requirement:** Platform must provide intuitive, pleasant user experience.
+
+**Metrics:**
+- First-time users can navigate without instructions
+- Average time to find vegetable information: <30 seconds
+- Average time to complete contact form: <2 minutes
+- User satisfaction score: >4.0/5.0
+
+#### NFR-USE-003: Mobile Experience
+**Priority:** HIGH  
+**Requirement:** Mobile-first responsive design.
+
+**Criteria:**
+- Touch-friendly tap targets (minimum 44x44px)
+- No pinch-zoom required
+- Fast load times on 3G/4G networks
+- Readable text without zooming (minimum 16px body text)
+
+### 3.2 Performance Requirements
+
+#### NFR-PERF-001: Page Load Speed
+**Priority:** HIGH  
+**Requirement:** Fast initial page load and rendering.
+
+**Metrics:**
+- First Contentful Paint (FCP): <1.8 seconds
+- Largest Contentful Paint (LCP): <2.5 seconds
+- Time to Interactive (TTI): <3.8 seconds
+- Total page weight: <500 KB (without images)
+- First Meaningful Paint: <1.5 seconds
+
+#### NFR-PERF-002: Runtime Performance
+**Priority:** MEDIUM  
+**Requirement:** Smooth interactions and animations.
+
+**Metrics:**
+- Scroll smoothness: 60 FPS
+- Animation frame rate: 60 FPS
+- Form validation response: <100ms
+- No layout shifts during page load (CLS: 0)
+
+#### NFR-PERF-003: Resource Optimization
+**Priority:** MEDIUM  
+**Requirement:** Efficient use of resources.
+
+**Criteria:**
+- Embedded CSS (no external stylesheet requests)
+- Embedded JavaScript (no external script requests)
+- Minimal inline SVG usage
+- No render-blocking resources
+- Browser caching enabled (when deployed)
+
+### 3.3 Reliability Requirements
+
+#### NFR-REL-001: Browser Compatibility
+**Priority:** HIGH  
+**Requirement:** Consistent functionality across browsers.
+
+**Coverage:**
+- 100% feature parity on Chrome, Firefox, Safari, Edge
+- Graceful degradation on older browsers
+- No breaking errors on any supported browser
+
+#### NFR-REL-002: Error Handling
+**Priority:** MEDIUM  
+**Requirement:** Graceful error handling.
+
+**Criteria:**
+- Form validation errors displayed clearly
+- No JavaScript console errors
+- Fallback content for missing images
+- User-friendly error messages
+
+### 3.4 Maintainability Requirements
+
+#### NFR-MAIN-001: Code Quality
+**Priority:** MEDIUM  
+**Requirement:** Clean, maintainable code structure.
+
+**Standards:**
+- Consistent indentation (4 spaces)
+- Clear variable and function naming
+- Comments for complex logic
+- Separation of concerns (HTML/CSS/JS)
+- Semantic HTML elements
+
+#### NFR-MAIN-002: Documentation
+**Priority:** MEDIUM  
+**Requirement:** Comprehensive documentation.
+
+**Deliverables:**
+- README.md with setup instructions
+- Inline code comments
+- REQUIREMENTS.md (this document)
+- Changelog for version updates
+
+---
+
+## 4. Technical Requirements
+
+### 4.1 Frontend Technologies
+
+#### TR-FE-001: HTML5
+**Requirement:** Valid, semantic HTML5 markup.
+
+**Specifications:**
+- DOCTYPE: `<!DOCTYPE html>`
+- Character encoding: UTF-8
+- Viewport meta tag for responsive design
+- Semantic elements: `<header>`, `<nav>`, `<section>`, `<footer>`
+- Valid HTML according to W3C validator
+
+#### TR-FE-002: CSS3
+**Requirement:** Modern CSS3 for styling and layout.
+
+**Features Required:**
+- CSS Grid for layout
+- Flexbox for component alignment
+- CSS Gradients for visual effects
+- CSS Transforms for hover effects
+- CSS Transitions for smooth animations
+- Media queries for responsive design
+- Custom properties (CSS variables) - optional
+
+#### TR-FE-003: JavaScript (ES6+)
+**Requirement:** Vanilla JavaScript for interactivity.
+
+**Features Required:**
+- Arrow functions
+- Template literals
+- `const` and `let` declarations
+- DOM manipulation methods
+- Event listeners
+- Form validation
+- Smooth scroll API
+
+### 4.2 Architecture Requirements
+
+#### TR-ARCH-001: Single File Architecture
+**Requirement:** Complete website in single HTML file.
+
+**Rationale:**
+- Easy deployment
+- No build process required
+- Fast initial load (single HTTP request)
+- Portable and self-contained
+
+#### TR-ARCH-002: Progressive Enhancement
+**Requirement:** Core functionality without JavaScript.
+
+**Criteria:**
+- All content visible without JavaScript
+- Form submits (even if not processed)
+- Navigation links work
+- JavaScript enhances experience only
+
+### 4.3 Data Requirements
+
+#### TR-DATA-001: Static Data
+**Requirement:** All data embedded in HTML.
+
+**Data Entities:**
+- Vegetables (12+ entries)
+- Farming Regions (10+ entries)
+- Economic Impact Statistics
+- Contact Information
+- Regional Offices
+
+#### TR-DATA-002: Data Structure
+**Requirement:** Structured data in HTML cards.
+
+**Example Structure:**
+```html
+<div class="veg-card">
+    <div class="veg-header">
+        <h3>🥔 Vegetable Name</h3>
+        <div class="veg-price">$X.XX/kg</div>
+    </div>
+    <div class="veg-body">
+        <div class="veg-info"><strong>Field:</strong> Value</div>
+    </div>
+</div>
+```
+
+---
+
+## 5. User Requirements
+
+### 5.1 User Personas
+
+#### Persona 1: Indian Farmer
+**Needs:**
+- Find export opportunities
+- Understand pricing
+- Contact buyers directly
+- Learn about successful regions
+
+**Requirements:**
+- Simple, clear information
+- Regional language support (future)
+- Mobile-friendly interface
+- Easy contact form
+
+#### Persona 2: International Buyer
+**Needs:**
+- Browse available vegetables
+- Check pricing and availability
+- Understand sourcing regions
+- Contact suppliers
+
+**Requirements:**
+- Detailed product information
+- Professional presentation
+- Clear pricing
+- Easy inquiry process
+
+#### Persona 3: Distributor/Agent
+**Needs:**
+- Partner opportunities
+- Market information
+- Contact channels
+- Economic impact data
+
+**Requirements:**
+- Business-focused content
+- Statistics and metrics
+- Professional contact form
+- Regional office information
+
+#### Persona 4: Investor
+**Needs:**
+- Economic impact data
+- Growth projections
+- Market size information
+- Contact for investment inquiries
+
+**Requirements:**
+- Data-driven content
+- Future projections
+- Professional presentation
+- Business contact options
+
+### 5.2 User Journey Requirements
+
+#### UJ-001: First-Time Visitor
+**Journey:**
+1. Land on hero section
+2. Scroll through vegetables catalog
+3. Explore farming regions
+4. Review economic impact
+5. Fill contact form
+
+**Requirements:**
+- Clear value proposition in hero
+- Engaging visual design
+- Easy navigation
+- Compelling call-to-action
+
+#### UJ-002: Returning User
+**Journey:**
+1. Quick navigation to specific section
+2. Review updated information
+3. Contact form submission
+
+**Requirements:**
+- Sticky navigation for quick access
+- Smooth scrolling
+- Form pre-fill (future enhancement)
+
+---
+
+## 6. Data Requirements
+
+### 6.1 Content Requirements
+
+#### DR-CONT-001: Vegetables Data
+**Required Fields:**
+- Name (String, required)
+- Icon/Emoji (Unicode character)
+- Price USD (Decimal, required)
+- Price INR (Decimal, required)
+- Origin States (Array/String, required)
+- Season (String, required)
+- Varieties (String, required)
+- Description (String, 50-150 words, required)
+
+**Validation:**
+- Prices must be positive numbers
+- Prices must be in correct currency
+- Description must be informative
+
+#### DR-CONT-002: Regions Data
+**Required Fields:**
+- Region Name (String, required)
+- Icon/Emoji (Unicode character)
+- Key Crops (String, required)
+- Climate (String, required)
+- Specialty (String, required)
+- Soil Type (String, optional)
+- Notable Features (String, optional)
+
+#### DR-CONT-003: Statistics Data
+**Required Fields:**
+- Metric Name (String, required)
+- Value (Number or String, required)
+- Unit/Label (String, required)
+
+**Examples:**
+- "500+ Partner Farmers"
+- "25+ Countries Served"
+- "10,000+ Tons Exported Annually"
+
+### 6.2 Form Data Requirements
+
+#### DR-FORM-001: Contact Form Data
+**Required Fields:**
+- Full Name (String, max 100 chars)
+- Email (Email format, max 100 chars)
+- Phone (String, max 20 chars)
+- Type (Enum: Farmer, Buyer, Distributor, Investor, Other)
+- Message (Text, max 1000 chars)
+
+**Optional Fields:**
+- Region (String, max 100 chars)
+- Vegetables of Interest (String, max 200 chars)
+
+**Validation Rules:**
+- Email must match pattern: `^[^\s@]+@[^\s@]+\.[^\s@]+$`
+- Phone must contain only digits, spaces, +, -, ()
+- All required fields must be non-empty
+- Message minimum length: 10 characters
+
+---
+
+## 7. Security Requirements
+
+### 7.1 Current Implementation (Prototype)
+
+#### SR-CURR-001: Client-Side Validation
+**Requirement:** Basic form validation.
+
+**Implementation:**
+- HTML5 required attributes
+- Email type validation
+- JavaScript validation before submission
+
+#### SR-CURR-002: No Sensitive Data Storage
+**Requirement:** No user data stored locally.
+
+**Implementation:**
+- Form data logged to console only (for demo)
+- No cookies
+- No localStorage usage
+- No backend submission
+
+### 7.2 Future Implementation Requirements
+
+#### SR-FUT-001: HTTPS Only
+**Priority:** CRITICAL  
+**Requirement:** All traffic must use HTTPS.
+
+**Rationale:**
+- Protect user data in transit
+- SEO benefits
+- Browser trust indicators
+
+#### SR-FUT-002: Input Sanitization
+**Priority:** HIGH  
+**Requirement:** Sanitize all user inputs server-side.
+
+**Protection Against:**
+- XSS (Cross-Site Scripting)
+- SQL Injection
+- CSRF (Cross-Site Request Forgery)
+- Code Injection
+
+#### SR-FUT-003: Rate Limiting
+**Priority:** MEDIUM  
+**Requirement:** Limit form submissions to prevent spam.
+
+**Specifications:**
+- Max 5 submissions per IP per hour
+- CAPTCHA for suspicious activity
+- Honeypot fields for bot detection
+
+#### SR-FUT-004: Data Privacy
+**Priority:** HIGH  
+**Requirement:** Comply with data protection regulations.
+
+**Standards:**
+- GDPR compliance (for EU users)
+- Clear privacy policy
+- User consent for data collection
+- Right to data deletion
+
+---
+
+## 8. Performance Requirements
+
+### 8.1 Load Time Requirements
+
+#### PR-LOAD-001: Initial Load
+**Metric:** Time to First Byte (TTFB)  
+**Target:** <200ms  
+**Measurement:** From request to first byte received
+
+#### PR-LOAD-002: First Contentful Paint
+**Metric:** FCP  
+**Target:** <1.8 seconds  
+**Measurement:** Time until first text/image rendered
+
+#### PR-LOAD-003: Largest Contentful Paint
+**Metric:** LCP  
+**Target:** <2.5 seconds  
+**Measurement:** Time until largest element rendered
+
+#### PR-LOAD-004: Time to Interactive
+**Metric:** TTI  
+**Target:** <3.8 seconds  
+**Measurement:** Time until page fully interactive
+
+### 8.2 Runtime Performance Requirements
+
+#### PR-RUN-001: Scroll Performance
+**Metric:** Frames Per Second (FPS)  
+**Target:** 60 FPS  
+**Measurement:** Scroll smoothness
+
+#### PR-RUN-002: Animation Performance
+**Metric:** FPS during animations  
+**Target:** 60 FPS  
+**Measurement:** Hover effects, transitions
+
+#### PR-RUN-003: Form Responsiveness
+**Metric:** Input lag  
+**Target:** <100ms  
+**Measurement:** Time from keystroke to display
+
+### 8.3 Resource Usage Requirements
+
+#### PR-RES-001: Page Weight
+**Metric:** Total transfer size  
+**Target:** <500 KB (HTML + CSS + JS)  
+**Measurement:** Network transfer size
+
+#### PR-RES-002: Memory Usage
+**Metric:** JavaScript heap size  
+**Target:** <50 MB  
+**Measurement:** Browser memory consumption
+
+#### PR-RES-003: CPU Usage
+**Metric:** Processing time  
+**Target:** <500ms for script execution  
+**Measurement:** Total JavaScript execution time
+
+---
+
+## 9. Compliance Requirements
+
+### 9.1 Web Standards Compliance
+
+#### CR-WEB-001: HTML Validation
+**Standard:** W3C HTML5 Validator  
+**Requirement:** Zero errors, minimal warnings  
+**Validation URL:** https://validator.w3.org/
+
+#### CR-WEB-002: CSS Validation
+**Standard:** W3C CSS Validator  
+**Requirement:** Valid CSS3  
+**Validation URL:** https://jigsaw.w3.org/css-validator/
+
+#### CR-WEB-003: Accessibility Compliance
+**Standard:** WCAG 2.1 Level AA  
+**Requirement:** Pass automated accessibility tests
+
+**Testing Tools:**
+- WAVE (Web Accessibility Evaluation Tool)
+- axe DevTools
+- Lighthouse Accessibility Audit
+
+### 9.2 Legal Compliance Requirements
+
+#### CR-LEG-001: Disclaimer
+**Requirement:** Clear prototype disclaimer.
+
+**Content:**
+- "This is a PROTOTYPE/EDUCATIONAL PROJECT"
+- "All email addresses are fictional"
+- "Phone numbers are not functional"
+- "Prices are illustrative only"
+- "Not affiliated with APEDA or government organizations"
+
+#### CR-LEG-002: Copyright Notice
+**Requirement:** Copyright and attribution.
+
+**Content:**
+- Copyright year and owner
+- Open source license (MIT)
+- Attribution for data sources
+
+#### CR-LEG-003: Data Usage Notice
+**Requirement:** Privacy and data handling statement.
+
+**Content:**
+- "Contact form does not actually submit data"
+- "For educational/portfolio use only"
+- Future: Privacy policy link
+
+---
+
+## 10. Future Requirements
+
+### 10.1 Backend Integration (Phase 2)
+
+#### FR-BE-001: Server-Side Form Processing
+**Priority:** HIGH  
+**Description:** Process contact form submissions server-side.
+
+**Requirements:**
+- RESTful API endpoint for form submission
+- Database storage (PostgreSQL/MySQL)
+- Email notification system
+- Admin dashboard for viewing submissions
+
+**Technologies:**
+- Node.js + Express, OR
+- Python + Django/Flask, OR
+- PHP + Laravel
+
+#### FR-BE-002: Content Management System
+**Priority:** MEDIUM  
+**Description:** Admin interface for managing vegetables and regions.
+
+**Requirements:**
+- CRUD operations for vegetables
+- CRUD operations for regions
+- Image upload capability
+- Bulk import/export (CSV)
+
+#### FR-BE-003: User Authentication
+**Priority:** MEDIUM  
+**Description:** User accounts for farmers and buyers.
+
+**Requirements:**
+- Registration system
+- Login/logout
+- Password reset
+- Role-based access control (RBAC)
+- OAuth integration (Google, Facebook)
+
+### 10.2 Advanced Features (Phase 3)
+
+#### FR-ADV-001: Real-Time Pricing
+**Priority:** HIGH  
+**Description:** Dynamic pricing based on market conditions.
+
+**Requirements:**
+- API integration with commodity markets
+- Real-time price updates
+- Historical price charts
+- Price alerts for users
+
+#### FR-ADV-002: Inventory Management
+**Priority:** HIGH  
+**Description:** Track available inventory from farmers.
+
+**Requirements:**
+- Farmer dashboard for listing products
+- Stock quantity tracking
+- Expiration date management
+- Quality grading system
+
+#### FR-ADV-003: Order Management
+**Priority:** HIGH  
+**Description:** End-to-end order processing system.
+
+**Requirements:**
+- Shopping cart functionality
+- Checkout process
+- Payment gateway integration (Stripe, Razorpay)
+- Order tracking
+- Invoice generation
+
+#### FR-ADV-004: Logistics Integration
+**Priority:** MEDIUM  
+**Description:** Track shipments and deliveries.
+
+**Requirements:**
+- Integration with shipping APIs
+- Real-time tracking
+- Delivery scheduling
+- Cold chain monitoring (IoT sensors)
+
+### 10.3 AI/ML Features (Phase 4)
+
+#### FR-AI-001: Price Prediction
+**Priority:** MEDIUM  
+**Description:** ML model to predict future prices.
+
+**Requirements:**
+- Historical price data analysis
+- Seasonal pattern recognition
+- Market trend forecasting
+- 90% prediction accuracy (within ±10%)
+
+**Technologies:**
+- Python + scikit-learn
+- TensorFlow/PyTorch
+- Time series analysis (ARIMA, LSTM)
+
+#### FR-AI-002: Quality Assessment
+**Priority:** MEDIUM  
+**Description:** Image recognition for quality grading.
+
+**Requirements:**
+- Upload product images
+- Automated quality scoring (Grade A/B/C)
+- Defect detection
+- 85%+ accuracy rate
+
+**Technologies:**
+- Computer Vision (OpenCV)
+- Deep Learning (CNN models)
+- TensorFlow/PyTorch
+
+#### FR-AI-003: Chatbot Assistant
+**Priority:** LOW  
+**Description:** AI chatbot for farmer queries.
+
+**Requirements:**
+- Natural language understanding
+- Multi-language support (English, Hindi, regional)
+- FAQs automation
+- Human handoff for complex queries
+
+**Technologies:**
+- NLP (spaCy, NLTK)
+- Dialogflow or Rasa
+- GPT integration
+
+### 10.4 Mobile Application (Phase 5)
+
+#### FR-MOB-001: Native Mobile Apps
+**Priority:** MEDIUM  
+**Description:** iOS and Android applications.
+
+**Requirements:**
+- Feature parity with web version
+- Offline mode support
+- Push notifications
+- Camera integration for product photos
+- GPS for farmer location
+
+**Technologies:**
+- React Native, OR
+- Flutter, OR
+- Native (Swift for iOS, Kotlin for Android)
+
+#### FR-MOB-002: Progressive Web App (PWA)
+**Priority:** HIGH  
+**Description:** Convert website to PWA.
+
+**Requirements:**
+- Service worker for offline caching
+- Add to home screen functionality
+- Push notifications
+- Fast load times (App-like experience)
+
+**Technologies:**
+- Service Workers
+- Web App Manifest
+- IndexedDB for offline storage
+
+### 10.5 Internationalization (Phase 6)
+
+#### FR-I18N-001: Multi-Language Support
+**Priority:** MEDIUM  
+**Description:** Support for Indian regional languages.
+
+**Languages:**
+- English (default)
+- Hindi
+- Tamil
+- Telugu
+- Marathi
+- Gujarati
+- Bengali
+
+**Requirements:**
+- Language switcher in header
+- RTL support (if needed)
+- Localized content for vegetables/regions
+- Date/number formatting per locale
+
+#### FR-I18N-002: Currency Conversion
+**Priority:** MEDIUM  
+**Description:** Support for multiple currencies.
+
+**Currencies:**
+- USD (default)
+- INR
+- EUR
+- GBP
+- AED
+
+**Requirements:**
+- Real-time exchange rates API
+- Automatic conversion based on user location
+- Manual currency selection option
+
+### 10.6 Analytics and Reporting (Phase 7)
+
+#### FR-ANA-001: Web Analytics
+**Priority:** HIGH  
+**Description:** Track user behavior and engagement.
+
+**Metrics:**
+- Page views
+- User sessions
+- Bounce rate
+- Conversion rate (form submissions)
+- Popular vegetables/regions
+
+**Tools:**
+- Google Analytics 4
+- Mixpanel
+- Custom analytics dashboard
+
+#### FR-ANA-002: Business Intelligence
+**Priority:** MEDIUM  
+**Description:** Advanced reporting for business insights.
+
+**Requirements:**
+- Sales reports
+- Farmer performance metrics
+- Regional demand analysis
+- Seasonal trends
+- Export destination reports
+
+**Tools:**
+- Tableau
+- Power BI
+- Custom dashboard with Chart.js/D3.js
+
+---
+
+## Appendix A: Requirement Prioritization
+
+### Priority Levels
+
+| Priority | Description | Timeframe |
+|----------|-------------|-----------|
+| **CRITICAL** | Must have for launch | Immediate |
+| **HIGH** | Essential features | Phase 1 |
+| **MEDIUM** | Important but not blocking | Phase 2-3 |
+| **LOW** | Nice to have | Phase 4+ |
+
+### Current Implementation Status
+
+| Category | Total Requirements | Completed | In Progress | Planned |
+|----------|-------------------|-----------|-------------|---------|
+| Functional | 15 | 15 | 0 | 0 |
+| Non-Functional | 12 | 10 | 2 | 0 |
+| Technical | 8 | 8 | 0 | 0 |
+| Future | 20 | 0 | 0 | 20 |
+
+---
+
+## Appendix B: Testing Requirements
+
+### Unit Testing
+- Form validation functions
+- Utility functions (if any)
+- Data formatting functions
+
+### Integration Testing
+- Navigation flow
+- Form submission process
+- Responsive behavior across breakpoints
+
+### User Acceptance Testing (UAT)
+- Test with real farmers (Hindi speakers)
+- Test with international buyers
+- Test on various devices and browsers
+
+### Performance Testing
+- Load time testing with Lighthouse
+- Stress testing with multiple concurrent users
+- Network throttling tests (3G/4G simulation)
+
+### Accessibility Testing
+- Screen reader testing (NVDA, JAWS)
+- Keyboard-only navigation
+- Color contrast verification
+- ARIA attributes validation
+
+---
+
+## Appendix C: Dependency Management
+
+### Current Dependencies
+**None** - The project is dependency-free!
+
+### Future Dependencies (When Backend is Implemented)
+
+#### Backend:
+```
+Node.js Dependencies (package.json):
+- express: ^4.18.0
+- body-parser: ^1.20.0
+- cors: ^2.8.5
+- dotenv: ^16.0.0
+- nodemailer: ^6.9.0
+- mongoose: ^7.0.0 (if using MongoDB)
+- pg: ^8.10.0 (if using PostgreSQL)
+- bcrypt: ^5.1.0
+- jsonwebtoken: ^9.0.0
+```
+
+#### Python Backend (requirements.txt):
+```
+Django==4.2.0
+djangorestframework==3.14.0
+psycopg2-binary==2.9.6
+python-dotenv==1.0.0
+Pillow==9.5.0
+celery==5.2.7
+redis==4.5.5
+```
+
+### Development Dependencies:
+```
+- nodemon: ^2.0.22
+- eslint: ^8.40.0
+- prettier: ^2.8.8
+- webpack: ^5.85.0 (if bundling)
+```
+
+---
+
+## Appendix D: Environment Variables (Future)
+
+```env
+# Database
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=bytes_battle
+DB_USER=admin
+DB_PASSWORD=secure_password
+
+# API Keys
+SENDGRID_API_KEY=your_sendgrid_key
+STRIPE_SECRET_KEY=your_stripe_key
+GOOGLE_MAPS_API_KEY=your_maps_key
+
+# Application
+NODE_ENV=production
+PORT=3000
+JWT_SECRET=your_jwt_secret
+SESSION_SECRET=your_session_secret
+
+# Email Configuration
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=noreply@bytesbattle.com
+SMTP_PASS=your_email_password
+
+# Third-Party Services
+AWS_ACCESS_KEY_ID=your_aws_key
+AWS_SECRET_ACCESS_KEY=your_aws_secret
+S3_BUCKET_NAME=bytes-battle-uploads
+```
+
+---
+
+## Document Approval
+
+| Role | Name | Signature | Date |
+|------|------|-----------|------|
+| Product Owner | | | |
+| Technical Lead | | | |
+| QA Lead | | | |
+| Project Manager | | | |
+
+---
+
+**End of Requirements Document**
+
+*For questions or clarifications, contact the project team.*
