@@ -75,13 +75,6 @@
 **Priority:** HIGH  
 **Description:** Landing page must display compelling hero section with call-to-action.
 
-**Acceptance Criteria:**
-- Clear value proposition headline
-- Subheading with mission statement
-- Primary CTA button ("Partner With Us")
-- Responsive background image/gradient
-- Readable text contrast ratios
-
 #### FR-UI-003: Vegetables Catalog
 **Priority:** HIGH  
 **Description:** Display comprehensive catalog of exportable vegetables.
@@ -241,16 +234,6 @@
 **Priority:** MEDIUM  
 **Requirement:** Smooth interactions and animations.
 
-**Metrics:**
-- Scroll smoothness: 60 FPS
-- Animation frame rate: 60 FPS
-- Form validation response: <100ms
-- No layout shifts during page load (CLS: 0)
-
-#### NFR-PERF-003: Resource Optimization
-**Priority:** MEDIUM  
-**Requirement:** Efficient use of resources.
-
 **Criteria:**
 - Embedded CSS (no external stylesheet requests)
 - Embedded JavaScript (no external script requests)
@@ -295,14 +278,6 @@
 #### NFR-MAIN-002: Documentation
 **Priority:** MEDIUM  
 **Requirement:** Comprehensive documentation.
-
-**Deliverables:**
-- README.md with setup instructions
-- Inline code comments
-- REQUIREMENTS.md (this document)
-- Changelog for version updates
-
----
 
 ## 4. Technical Requirements
 
