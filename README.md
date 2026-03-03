@@ -1,14 +1,6 @@
 # Bytes Battle - Agricultural Export Platform
 
-![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
 
-**Connecting Indian Farmers to Global Markets**
-
-A modern, responsive web platform designed to empower Indian farmers by connecting them directly with international buyers, eliminating middlemen and ensuring fair prices for premium agricultural produce.
 
 ##  Table of Contents
 
