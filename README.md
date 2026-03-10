@@ -160,23 +160,7 @@ The website features a **sticky navigation header** with the following sections:
 - **Economic Impact**: Data on platform benefits
 - **Contact**: Inquiry and contact form
 
-### Smooth Scrolling
 
-All navigation links use smooth scrolling for better UX:
-
-```javascript
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    });
-});
-```
-
----
 
 ## 🥬 Vegetables Catalog
 
